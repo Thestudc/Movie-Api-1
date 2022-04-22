@@ -107,3 +107,36 @@ main{
 .movie:hover .overview{
     transform: translateY(0);
 }
+
+.no-results{
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: rgb(153, 54, 51);
+}
+
+.pagination{
+    display: flex;
+    margin: 10px 30px;
+    align-items: center;
+    justify-content: center;
+    color: #ffff;
+}
+
+.page{
+    padding: 20px;
+    cursor: pointer;
+}
+
+.page.disabled{
+    cursor: not-allowed;
+    color: #808080;
+}
+
+.current{
+    padding: 15px 20px;
+    border-radius: 50px;
+    border: 5px solid rgb(192, 128, 54);
+    font-size: 20px;
+    font-weight: 600;
+}
