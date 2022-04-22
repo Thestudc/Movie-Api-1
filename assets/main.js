@@ -59,7 +59,7 @@ function showMovies(data){
     main.innerHTML = " ";
 
     data.forEach(movie => {
-        const {title, poster_path, vote_average, overview} = movie;
+        const {title, poster_path, vote_average, overview, id} = movie;
         const movvieEl = document.createElement('div');
         movvieEl.classList.add('movie');
         movvieEl.innerHTML = 
@@ -74,10 +74,51 @@ function showMovies(data){
             <div class="overview">
                 <h3>Overview</h3>
                 ${overview}
+                <br>
+                <button class="know-more" id="${id}">Know more</button>
             </div>
         `
         main.appendChild(movvieEl);
+
+        document.getElementById(id).addEventListener('click' , () => {
+            console.log(id);
+            openNav(movie)
+        })
     })
+}
+
+const overlayContent = document.getElementById('overlay-content');
+function openNav(movie){
+    let id = movie.id;
+    fetch(BASE_URL + '/movie/' + id + '/videos?' + API_KEY).then(res => res.json()).then(videoData =>{
+        console.log(videoData);
+        if(videoData)
+        {
+            document.getElementById("myNav").style.width = "100%";
+            if(videoData.results.length > 0)
+            {
+                var embed = [];
+                videoData.results.forEach(video => {
+                    let {key, name, site} = video;
+                    if(site == 'YouTube')
+                    {
+                        embed.push(`
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/${key}" title="${name}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        `)
+                    }
+                })
+                overlayContent.innerHTML  = embed.join('');
+            }
+            else
+            {
+                overlayContent.innerHTML = `<h1 class = "no-results">No Results Were Found</h1>`;
+            }
+        }
+    });
+}
+
+function closeNav(){
+    document.getElementById("myNav").style.width = "0%";
 }
 
 function getColor(vote_average)
