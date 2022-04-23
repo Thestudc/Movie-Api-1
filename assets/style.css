@@ -65,8 +65,8 @@ main{
 .movie-info{
     color: #eee;
     display: flex;
-    align-items: center;
-    /* Mozhe da bide i baseline */
+    align-items: baseline;
+    /* Mozhe da bide i center */
     justify-content: space-between;
     padding: 0.5rem 1rem 1rem;
     letter-spacing: 0.5px;
