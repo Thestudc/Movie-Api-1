@@ -3,8 +3,10 @@
 }
 
 :root{
-    --primary-color:#22254b;
-    --secondary-color: #373b69;
+    /* --primary-color:#22254b; */
+    --primary-color:#213426;
+    /* --secondary-color: #373b69; */
+    --secondary-color: #535358;
 }
 
 body{
@@ -59,14 +61,12 @@ main{
 .movie img{
     width: 100%;
     height: 80%; 
-    /* Mozhe i da ne stoi toa */
 }
 
 .movie-info{
     color: #eee;
     display: flex;
     align-items: baseline;
-    /* Mozhe da bide i center */
     justify-content: space-between;
     padding: 0.5rem 1rem 1rem;
     letter-spacing: 0.5px;
