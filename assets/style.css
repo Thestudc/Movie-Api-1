@@ -39,7 +39,7 @@ header{
 }
 
 .search::placeholder{
-    color: #7378c5;
+    color: rgb(192, 128, 54);
 }
 
 main{
